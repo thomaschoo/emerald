@@ -1,0 +1,56 @@
+@(content: Option[Html] = None)(implicit menu: Menu, l: Lang)
+
+@displayContent() = {
+    @content match {
+        case Some(html) => { @html }
+        case None => { @home() }
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@Messages("app.title")</title>
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/index.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/home.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/takeout.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/lunch.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/dine.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/feast.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/wedding.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/venue.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/contact.css")">
+        <link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.at("images/favicon.ico")">
+        <script src="http://code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/index.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="page">
+            <div id="menu">
+                <div id="menu-content">
+                    <a href="/">
+                        <img id="logo" src="@routes.Assets.at("images/logo.png")" alt="Emerald Chinese Restaurant"></img>
+                    </a>
+                    <ul>
+                        @for(m <- menu.items) {
+                        <li class="menu-item" data-url="@m.url">
+                            <div class="">
+                                <img src="@routes.Assets.at("images/arrow-right.png")"></img>
+                                @m.text
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div id="page-content">
+                <p id="contact">30 Eglinton Avenue West Mississauga, ON L5R 3E7 905.890.9338</p>
+                <div id="content">
+                    @displayContent()
+                </div>
+                @footer()
+            </div>
+        </div>
+    </body>
+</html>

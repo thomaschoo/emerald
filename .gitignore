@@ -2,6 +2,7 @@
 bin/
 /db
 .eclipse
+.idea
 /lib/
 /logs/
 /modules
@@ -15,4 +16,5 @@ server.pid
 *.eml
 /dist/
 .cache
+.sass-cache
 
