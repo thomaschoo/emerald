@@ -1,12 +1,12 @@
 #contact-content {
+  font-size: 14px;
+  font-weight: bold;
+
   #header {
     margin-top: -4px;
   }
 
-  font-size: 14px;
-  font-weight: bold;
-
-  div:last-child {
-    margin-bottom:30px;
+  :last-child {
+    margin-bottom: 30px;
   }
 }
