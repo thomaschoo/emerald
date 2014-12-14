@@ -109,3 +109,18 @@ body {
   padding: 25px 0 15px;
   src: url('../images/logo.png');
 }
+
+.img-container {
+  img {
+    margin-top: 5px;
+  }
+
+  img:first-child {
+    margin-top: 30px;
+  }
+
+  img:last-child {
+    margin-bottom: 30px;
+  }
+}
+
