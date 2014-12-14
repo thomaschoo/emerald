@@ -10,7 +10,7 @@ trait MenuSupport {
   implicit def menu: Menu = {
     val items =
       ConfigFactory
-        .parseResources("messages")
+        .load("menu.conf")
         .getConfigList("menu")
         .map { x =>
           val key = x.entrySet().last.getKey
