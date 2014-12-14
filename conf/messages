@@ -1,9 +1,4 @@
 app.title=Emerald Chinese Restaurant
-menu.1.home="\u9996\u9801 Home"
-menu.2.takeout="\u5916\u8CE3 Takeout"
-menu.3.lunch="\u9EDE\u5FC3 Dim Sum/Lunch"
-menu.4.dine="\u5802\u98DF Dine-In"
-menu.5.feast="\u9152\u5E2D Feast/Banquet"
-menu.6.wedding="\u5A5A\u5BB4 Wedding"
-menu.7.venue="\u8A2D\u65BD Venue"
-menu.8.contact="\u806F\u7D61\u5EB7\u7FE0 Contact Us"
+contact.address=30 Eglinton Avenue West Mississauga, ON L5R 3E7
+contact.phone=905.890.9338
+contact.fax=905.890.6828

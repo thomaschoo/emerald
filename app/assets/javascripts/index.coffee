@@ -13,6 +13,5 @@ $ ->
     $('li.menu-item').on 'click', () ->
         url = '/' + $(this).data 'url'
         $.get url, (data) ->
-            $('#content').html data
+            $('#main-content').html data
             window.scrollTo 0, 0
-
