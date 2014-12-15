@@ -21,9 +21,9 @@
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/wedding.css")">
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/venue.css")">
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/contact.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/vendor/blueimp-gallery.min.css")">
         <link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.at("images/favicon.ico")">
-        <script src="http://code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
-        <script src="@routes.Assets.at("javascripts/index.js")" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="page">
@@ -52,5 +52,8 @@
                 @footer()
             </div>
         </div>
+
+        <script src="@routes.Assets.at("javascripts/vendor/blueimp-gallery.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/index.js")" type="text/javascript"></script>
     </body>
 </html>

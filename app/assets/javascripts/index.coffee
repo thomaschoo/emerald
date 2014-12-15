@@ -15,3 +15,18 @@ $ ->
         $.get url, (data) ->
             $('#main-content').html data
             window.scrollTo 0, 0
+
+            initGallery()
+
+    # Add the gallery carousel, if applicable.
+    initGallery = () ->
+        galleryLinks = $('#links a')
+
+        if galleryLinks.length > 0
+            blueimp.Gallery galleryLinks, {
+                container: '#blueimp-gallery-carousel',
+                carousel: true,
+                stretchImages: 'cover'
+            }
+
+    initGallery()
