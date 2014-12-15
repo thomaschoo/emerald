@@ -1,0 +1,23 @@
+@()(implicit combos: Seq[Combo], l: Lang)
+
+<div id="feast-content">
+    <div id="header">
+        <img src="@routes.Assets.at("images/feast/header.png")" alt="header"></img>
+    </div>
+        <table>
+            <tr>
+                @for(c <- combos) {
+                <td>
+                    <div>@c.title</div>
+                    <ul>
+                        @for(i <- c.items) {
+                        <li>@i</li>
+                        }
+                    </ul>
+                    <div>(@c.servings) $@c.price</div>
+                }
+                </td>
+            </tr>
+        </table>
+    <div>(@Messages("feast.discount"))</div>
+</div>

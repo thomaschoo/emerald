@@ -1,0 +1,30 @@
+#feast-content {
+  font-size: 20px;
+
+  #header {
+    margin-top: -2px;
+  }
+
+  table {
+    margin: 0 0 10px;
+    width: 100%;
+  }
+
+  td {
+    div:first-child {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+
+  ul {
+      list-style-type: none;
+      padding-left: 0;
+      text-align: center;
+  }
+
+  > :last-child {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+}

@@ -1,6 +1,7 @@
 package models
 
 import com.typesafe.config.ConfigFactory
+
 import scala.collection.JavaConversions._
 
 case class Menu(items: Seq[MenuItem])
