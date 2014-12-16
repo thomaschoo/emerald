@@ -12,8 +12,10 @@ $ ->
 
     $('li.menu-item').on 'click', () ->
         url = '/' + $(this).data 'url'
+        NProgress.start()
         $.get url, (data) ->
             $('#main-content').html data
+            NProgress.done()
             window.scrollTo 0, 0
 
             initGallery()
@@ -41,4 +43,5 @@ $ ->
                 $(this).children('.indicator').css 'display', 'none'
 
     initGallery()
+    NProgress.configure { showSpinner: false }
 

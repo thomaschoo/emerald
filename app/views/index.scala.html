@@ -22,8 +22,10 @@
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/venue.css")">
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/contact.css")">
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/vendor/blueimp-gallery.min.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/vendor/nprogress.css")">
         <link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.at("images/favicon.ico")">
         <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/vendor/nprogress.js")" type="text/javascript"></script>
     </head>
     <body>
         <div id="page">
@@ -35,7 +37,7 @@
                     <ul>
                         @for(m <- menu.items) {
                         <li class="menu-item" data-url="@m.url">
-                            <div class="">
+                            <div>
                                 <img src="@routes.Assets.at("images/arrow-right.png")"></img>
                                 @m.text
                             </div>
