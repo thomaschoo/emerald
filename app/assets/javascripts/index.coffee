@@ -1,4 +1,4 @@
-$ ->
+define ['jquery', 'nprogress'], () ->
 
     $('li.menu-item').hover ->
         $(this).css 'cursor', 'pointer'
