@@ -12,6 +12,8 @@ libraryDependencies ++= Seq(
   cache,
   ws,
   filters,
+  "org.webjars" % "jquery" % "2.1.1",
+  "org.webjars" % "nprogress" % "0.1.2",
   "com.mohiva" %% "play-html-compressor" % "0.3.1",
   "com.typesafe" % "config" % "1.2.1"
 )
