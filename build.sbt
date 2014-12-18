@@ -19,8 +19,19 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.2.1"
 )
 
+// Merge the vendor css.
+Concat.groups := Seq(
+  "stylesheets/vendor/vendor.css" -> group {
+    val base: File = (resourceDirectory in Assets).value
+    val finder: PathFinder = (base / "stylesheets") ** "*.css"
+    finder.getPaths map { x =>
+      x.replace(base.toString + "/", "")
+    }
+  }
+)
+
 // For dev.
-pipelineStages in Assets := Seq(cssCompress)
+pipelineStages in Assets := Seq(concat, cssCompress)
 
 // For stage/prod.
-//pipelineStages := Seq(cssCompress, rjs)
+//pipelineStages := Seq(concat, cssCompress, rjs)

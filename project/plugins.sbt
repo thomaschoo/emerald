@@ -21,3 +21,5 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.0.2")
 addSbtPlugin("net.litola" % "play-sass" % "0.4.0")
 
 addSbtPlugin("net.ground5hark.sbt" % "sbt-css-compress" % "0.1.3")
+
+addSbtPlugin("net.ground5hark.sbt" % "sbt-concat" % "0.1.8")
