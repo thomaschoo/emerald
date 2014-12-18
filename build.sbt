@@ -7,10 +7,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, net.litola.SassP
 scalaVersion := "2.11.1"
 
 libraryDependencies ++= Seq(
-  jdbc,
-  anorm,
   cache,
-  ws,
   filters,
   "org.webjars" % "jquery" % "2.1.1",
   "org.webjars" % "nprogress" % "0.1.2",
