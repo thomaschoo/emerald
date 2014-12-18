@@ -19,4 +19,8 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.2.1"
 )
 
-pipelineStages := Seq(rjs)
+// For dev.
+pipelineStages in Assets := Seq(cssCompress)
+
+// For stage/prod.
+//pipelineStages := Seq(cssCompress, rjs)
