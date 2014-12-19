@@ -4,7 +4,7 @@ body {
   background-attachment: fixed;
   background-image: url('../images/bg.jpg');
   background-position: center top;
-  color: $primary-color;
+  color: $main-colour;
   font: 100% $font-stack;
   margin: 0 auto;
   text-align: center;
@@ -33,7 +33,7 @@ body {
 
   #footer {
     #footer-img {
-      background-color: #2f7827;
+      background-color: $footer-img-colour;
       height: 13px;
     }
 
@@ -70,16 +70,16 @@ body {
 
     li {
       background-image: url('../images/menu-content-bg.png');
-      border-top: 1px solid #000;
+      border-color: $menu-border-colour;
+      border-top: 1px solid;
       padding: 10px 0 10px 20px;
     }
 
     li:last-of-type {
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid;
     }
 
     div {
-      color: #273809;
       font-size: 14px;
       font-weight: bold;
       text-decoration: none;
@@ -87,6 +87,14 @@ body {
 
     img {
       visibility: hidden;
+    }
+
+    .menu-colour {
+      color: $menu-font-colour;
+    }
+
+    .menu-hover-colour {
+      color: $menu-hover-font-colour;
     }
   }
 }
