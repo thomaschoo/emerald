@@ -1,4 +1,4 @@
-@import "variables";
+@import 'partials/variables';
 
 body {
   background-attachment: fixed;
@@ -94,20 +94,4 @@ body {
 #logo {
   padding: 25px 0 15px;
   src: url('../images/logo.png');
-}
-
-.img-container {
-  -webkit-padding-start: 3px;
-
-  img {
-    margin-top: 5px;
-  }
-
-  > :first-child {
-    margin-top: 30px;
-  }
-
-  > :last-child {
-    margin-bottom: 30px;
-  }
 }

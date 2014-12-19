@@ -1,0 +1,15 @@
+.img-container {
+  -webkit-padding-start: 3px;
+
+  img {
+    margin-top: 5px;
+  }
+
+  > :first-child {
+    margin-top: 30px;
+  }
+
+  > :last-child {
+    margin-bottom: 30px;
+  }
+}
