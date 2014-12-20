@@ -1,8 +1,9 @@
 package controllers
 
+import play.api.mvc.{Action, Controller}
+
 import helpers.Utilities
 import models.MenuSupport
-import play.api.mvc._
 
 object Venue extends Controller with MenuSupport {
 

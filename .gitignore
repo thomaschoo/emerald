@@ -17,4 +17,6 @@ server.pid
 /dist/
 .cache
 .sass-cache
-
+.classpath
+.project
+.settings

@@ -1,6 +1,6 @@
 package helpers
 
-import play.api.mvc._
+import play.api.mvc.Request
 
 object Utilities {
 

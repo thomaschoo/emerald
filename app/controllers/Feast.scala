@@ -1,11 +1,13 @@
 package controllers
 
 import com.typesafe.config.ConfigFactory
+
+import play.api.mvc.{Action, Controller}
+
+import scala.collection.JavaConversions.asScalaBuffer
+
 import helpers.Utilities
 import models.{Combo, MenuSupport}
-import play.api.mvc._
-
-import scala.collection.JavaConversions._
 
 object Feast extends Controller with MenuSupport {
   val combos: Seq[Combo] =

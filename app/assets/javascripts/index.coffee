@@ -44,4 +44,3 @@ define ['jquery', 'nprogress'], () ->
 
     initGallery()
     NProgress.configure { showSpinner: false }
-

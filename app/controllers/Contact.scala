@@ -1,8 +1,9 @@
 package controllers
 
+import play.api.mvc.{Action, Controller}
+
 import helpers.Utilities
 import models.MenuSupport
-import play.api.mvc._
 
 object Contact extends Controller with MenuSupport {
 

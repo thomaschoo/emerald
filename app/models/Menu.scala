@@ -2,7 +2,7 @@ package models
 
 import com.typesafe.config.ConfigFactory
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConversions.{asScalaBuffer, asScalaSet}
 
 case class Menu(items: Seq[MenuItem])
 case class MenuItem(url: String, text: String)
