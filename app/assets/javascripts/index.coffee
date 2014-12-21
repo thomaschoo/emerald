@@ -18,29 +18,23 @@ define ['jquery', 'nprogress'], () ->
             NProgress.done()
             window.scrollTo 0, 0
 
-            initGallery()
+            initCarousel(url)
 
     # Add the gallery carousel, if applicable.
-    initGallery = () ->
-        galleryLinks = $('#links a')
+    initCarousel = (path) ->
+        carouselLinks = $('#links a')
 
-        if galleryLinks.length > 0
-            blueimp.Gallery galleryLinks, {
-                container: '#blueimp-gallery-carousel',
+        if carouselLinks.length > 0
+            container = '#carousel'
+            blueimp.Gallery carouselLinks, {
+                container: container,
                 carousel: true,
                 stretchImages: 'cover'
             }
 
-            $('#blueimp-gallery-carousel').hover ->
-                $(this).children('.prev').css 'display', 'inline'
-                $(this).children('.next').css 'display', 'inline'
-                $(this).children('.play-pause').css 'display', 'inline'
-                $(this).children('.indicator').css 'display', 'inline'
-            , ->
-                $(this).children('.prev').css 'display', 'none'
-                $(this).children('.next').css 'display', 'none'
-                $(this).children('.play-pause').css 'display', 'none'
-                $(this).children('.indicator').css 'display', 'none'
+            controller = path.replace '/', ''
+            require [controller], (controller) ->
+                controller.initCarouselControls container
 
-    initGallery()
+    initCarousel window.location.pathname
     NProgress.configure { showSpinner: false }

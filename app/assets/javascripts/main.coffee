@@ -1,6 +1,5 @@
 require.config {
   paths: {
-    index: './index'
     jquery: '../lib/jquery/jquery'
     nprogress: '../lib/nprogress/nprogress'
   }
