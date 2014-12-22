@@ -1,12 +1,5 @@
 @(content: Option[Html] = None)(implicit menu: Menu, l: Lang)
 
-@displayContent() = {
-  @content match {
-    case Some(html) => { @html }
-    case None => { @home() }
-  }
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -38,7 +31,10 @@
       <div id="page-content">
         <p id="contact">@Messages("contact.address") @Messages("contact.phone")</p>
         <div id="main-content">
-          @displayContent()
+          @content match {
+            case Some(html) => { @html }
+            case None => { @home() }
+          }
         </div>
         @footer()
       </div>
