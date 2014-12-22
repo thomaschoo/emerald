@@ -1,0 +1,18 @@
+@(length: Integer, path: String, extension: String = "jpg")
+
+@formatLink(i: Integer, p: String, e: String) = @{
+  s"images/$p/$i.$e"
+}
+
+<div id="carousel" class="blueimp-gallery blueimp-gallery-carousel">
+  <div class="slides"></div>
+  <a class="prev">‹</a>
+  <a class="next">›</a>
+  <a class="play-pause"></a>
+  <ol class="indicator"></ol>
+</div>
+<div id="links">
+  @for(l <- 1 to length) {
+    <a href="@routes.Assets.at(formatLink(l, path, extension))"></a>
+  }
+</div>
