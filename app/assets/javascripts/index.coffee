@@ -18,24 +18,19 @@ define ['jquery', 'nprogress'], () ->
       NProgress.done()
       window.scrollTo 0, 0
 
-      initCarousel url
+      initCarousel()
 
   # Add the gallery carousel, if applicable.
-  initCarousel = (path) ->
+  initCarousel = () ->
     carouselLinks = $('#links a')
 
     if carouselLinks.length > 0
-      controller = path.replace '/', ''
-      require [controller], (controller) ->
-        defaultParams = {
-          container: '#carousel',
-          carousel: true,
-          stretchImages: 'cover',
-          startSlideshow: false
-        }
+      blueimp.Gallery carouselLinks, {
+        container: '#carousel'
+        carousel: true
+        stretchImages: 'cover'
+        startSlideshow: false
+      }
 
-        params = controller.carouselParams defaultParams
-        blueimp.Gallery carouselLinks, params
-
-  initCarousel window.location.pathname
+  initCarousel()
   NProgress.configure { showSpinner: false }
