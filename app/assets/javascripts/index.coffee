@@ -27,7 +27,15 @@ define ['jquery', 'nprogress'], () ->
     if carouselLinks.length > 0
       controller = path.replace '/', ''
       require [controller], (controller) ->
-        controller.initCarousel carouselLinks, '#carousel'
+        defaultParams = {
+          container: '#carousel',
+          carousel: true,
+          stretchImages: 'cover',
+          startSlideshow: false
+        }
+
+        params = controller.carouselParams defaultParams
+        blueimp.Gallery carouselLinks, params
 
   initCarousel window.location.pathname
   NProgress.configure { showSpinner: false }

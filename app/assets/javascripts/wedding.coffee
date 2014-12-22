@@ -1,13 +1,9 @@
 define ['jquery'], () ->
 
-  initCarousel = (carouselLinks, container) ->
-    blueimp.Gallery carouselLinks, {
-      container: container,
-      carousel: true,
-      stretchImages: 'cover'
-    }
+  carouselParams = (defaultParams) ->
+    defaultParams.startSlideshow = true
 
-    $(container).hover ->
+    $(defaultParams.container).hover ->
       $(this).children('.prev').css 'display', 'inline'
       $(this).children('.next').css 'display', 'inline'
       $(this).children('.play-pause').css 'display', 'inline'
@@ -18,6 +14,8 @@ define ['jquery'], () ->
       $(this).children('.play-pause').css 'display', 'none'
       $(this).children('.indicator').css 'display', 'none'
 
+    defaultParams
+
   {
-    initCarousel: initCarousel
+    carouselParams: carouselParams
   }

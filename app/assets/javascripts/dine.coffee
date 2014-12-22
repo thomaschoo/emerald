@@ -1,13 +1,8 @@
 define [], () ->
 
-  initCarousel = (carouselLinks, container) ->
-    blueimp.Gallery carouselLinks, {
-      container: container,
-      carousel: true,
-      stretchImages: 'cover',
-      startSlideshow: false
-    }
+  carouselParams = (defaultParams) ->
+    defaultParams
 
   {
-    initCarousel: initCarousel
+    carouselParams: carouselParams
   }
