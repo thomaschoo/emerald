@@ -5,13 +5,16 @@
 
   #carousel {
     height: 542px;
-    margin: 30px auto;
     width: 757px;
+  }
+}
 
-    .prev,
-    .next,
-    .indicator {
-      display: inline;
-    }
+#carousel {
+  margin: 30px auto;
+
+  .prev,
+  .next,
+  .indicator {
+    display: inline;
   }
 }
