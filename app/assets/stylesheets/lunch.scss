@@ -2,4 +2,16 @@
   #header {
     margin-top: -46px;
   }
+
+  #carousel {
+    height: 630px;
+    margin: 30px auto;
+    width: 758px;
+
+    .prev,
+    .next,
+    .indicator {
+      display: inline;
+    }
+  }
 }
