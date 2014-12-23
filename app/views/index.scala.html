@@ -18,12 +18,12 @@
           </a>
           <ul>
             @for(m <- menu.items) {
-            <li class="menu-item" data-url="@m.url">
-              <div class="menu-colour">
-                <img src='@routes.Assets.at("images/arrow-right.png")'/>
-                @m.text
-              </div>
-            </li>
+              <li class="menu-item" data-url="@m.url">
+                <div class="menu-colour">
+                  <img src='@routes.Assets.at("images/arrow-right.png")'/>
+                  @m.text
+                </div>
+              </li>
             }
           </ul>
         </div>
