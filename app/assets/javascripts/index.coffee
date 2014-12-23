@@ -1,5 +1,8 @@
 define ['jquery', 'nprogress'], () ->
 
+  NProgress.configure { showSpinner: false }
+  NProgress.start()
+
   $('li.menu-item').hover ->
     $(this).css 'cursor', 'pointer'
     $div = $(this).children 'div'
@@ -11,15 +14,17 @@ define ['jquery', 'nprogress'], () ->
     $div.children('img').css 'visibility', 'hidden'
 
   $('li.menu-item').on 'click', () ->
-    url = '/' + $(this).data 'url'
     NProgress.start()
+
+    url = '/' + $(this).data 'url'
     $.get url, (data) ->
       $('#main-content').html data
-      NProgress.done()
       window.scrollTo 0, 0
 
       initCarousel()
       initLightbox()
+
+      NProgress.done()
 
   # Add the carousel, if applicable.
   initCarousel = () ->
@@ -54,4 +59,4 @@ define ['jquery', 'nprogress'], () ->
   initCarousel()
   initLightbox()
 
-  NProgress.configure { showSpinner: false }
+  NProgress.done()
