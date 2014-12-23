@@ -30,6 +30,10 @@ define ['jquery', 'nprogress'], () ->
         carousel: true
         stretchImages: 'cover'
         startSlideshow: false
+        onopened: () ->
+          $('.prev').css 'display', 'inline'
+          $('.next').css 'display', 'inline'
+          $('.indicator').css 'display', 'inline'
       }
 
   initCarousel()
