@@ -1,13 +1,10 @@
 #venue-content {
   #lightbox-links {
-    margin: 30px auto 20px;
-
-    :nth-child(odd) {
-      margin-bottom: 10px;
-      margin-right: 5px;
-    }
+    margin: 30px auto;
+    width: 706px;
 
     a {
+      display: inline-block;
       text-decoration: none;
     }
   }
