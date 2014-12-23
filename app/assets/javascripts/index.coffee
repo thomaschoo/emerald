@@ -19,8 +19,9 @@ define ['jquery', 'nprogress'], () ->
       window.scrollTo 0, 0
 
       initCarousel()
+      initLightbox()
 
-  # Add the gallery carousel, if applicable.
+  # Add the carousel, if applicable.
   initCarousel = () ->
     carouselLinks = $('#links a')
 
@@ -36,5 +37,21 @@ define ['jquery', 'nprogress'], () ->
           $('.indicator').css 'display', 'inline'
       }
 
+  # Add the lightbox, if applicable.
+  initLightbox = () ->
+    $('#lightbox-links').on 'click', (event) ->
+      event = event || window.event
+      target = event.target || event.srcElement
+      link = if target.src then target.parentNode else target
+      links = $(this).children 'a'
+      blueimp.Gallery links, {
+        container: '#carousel'
+        index: link
+        event: event
+        slideshowInterval: 3000
+      }
+
   initCarousel()
+  initLightbox()
+
   NProgress.configure { showSpinner: false }

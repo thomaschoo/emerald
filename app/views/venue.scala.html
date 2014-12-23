@@ -2,7 +2,21 @@
   <div id="header">
     <img src='@routes.Assets.at("images/venue/header.png")' alt="header"/>
   </div>
-  <div class="img-container">
-    <img src='@routes.Assets.at("images/venue/1.png")'/>
+
+  <div id="carousel" class="blueimp-gallery">
+    <div class="slides"></div>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
   </div>
+  <div id="lightbox-links">
+    @for(i <- 1 to 6) {
+      <a href='@routes.Assets.at(s"images/venue/$i.jpg")'>
+        <img src='@routes.Assets.at(s"images/venue/thumbnails/$i.jpg")'/>
+      </a>
+    }
+  </div>
+
 </div>
