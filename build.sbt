@@ -28,8 +28,24 @@ Concat.groups := {
   )
 }
 
+RjsKeys.mainModule := "app"
+
+// Clean up asset jar.
+includeFilter in filter := (
+  "*.coffee*" || "*.map*" || "*.js*" ||
+  "*.scss*" || "*.css*" ||
+  "build.txt*"
+)
+
+excludeFilter in filter := (
+  "*app.js" || "app.js.md5" ||
+  "*app.scss" || "app.scss.md5" ||
+  "*vendor.js" || "vendor.js.md5" ||
+  "*vendor.min.css" || "vendor.min.css.md5"
+)
+
 // For dev.
 pipelineStages in Assets := Seq(concat, cssCompress, digest)
 
 // For stage/prod.
-//pipelineStages := Seq(concat, cssCompress, rjs, digest)
+//pipelineStages := Seq(concat, cssCompress, rjs, digest, filter)
