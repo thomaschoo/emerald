@@ -8,6 +8,6 @@
 </div>
 <div id="links">
   @for(l <- 1 to length) {
-    <a href='@routes.Assets.at(s"images/$path/$l.$extension")'></a>
+    <a href='@routes.Assets.versioned(s"images/$path/$l.$extension")'></a>
   }
 </div>

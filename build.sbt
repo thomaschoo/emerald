@@ -28,7 +28,7 @@ Concat.groups := Seq(
 )
 
 // For dev.
-pipelineStages in Assets := Seq(concat, cssCompress)
+pipelineStages in Assets := Seq(concat, cssCompress, digest)
 
 // For stage/prod.
-//pipelineStages := Seq(concat, cssCompress, rjs)
+//pipelineStages := Seq(concat, cssCompress, rjs, digest)

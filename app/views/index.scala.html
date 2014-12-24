@@ -5,22 +5,22 @@
 <html>
   <head>
     <title>@Messages("app.title")</title>
-    <link rel="stylesheet" href='@routes.Assets.at("stylesheets/app.min.css")'>
-    <link rel="stylesheet" href='@routes.Assets.at("stylesheets/vendor/vendor.min.css")'>
-    <link rel="shortcut icon" type="image/x-icon" href='@routes.Assets.at("images/favicon.ico")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/app.min.css")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/vendor/vendor.min.css")'>
+    <link rel="shortcut icon" type="image/x-icon" href='@routes.Assets.versioned("images/favicon.ico")'>
   </head>
   <body>
     <div id="page">
       <div id="menu">
         <div id="menu-content">
           <a href="/">
-              <img id="logo" src='@routes.Assets.at("images/logo.png")' alt="Emerald Chinese Restaurant"/>
+              <img id="logo" src='@routes.Assets.versioned("images/logo.png")' alt="Emerald Chinese Restaurant"/>
           </a>
           <ul>
             @for(m <- menu.items) {
               <li class="menu-item" data-url="@m.url">
                 <div class="menu-colour">
-                  <img src='@routes.Assets.at("images/arrow-right.png")'/>
+                  <img src='@routes.Assets.versioned("images/arrow-right.png")'/>
                   @m.text
                 </div>
               </li>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <script src='@routes.Assets.at("javascripts/vendor/blueimp-gallery.min.js")' type="text/javascript"></script>
-    <script data-main='@routes.Assets.at("javascripts/main.js")' src='@routes.Assets.at("lib/requirejs/require.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.versioned("javascripts/vendor/blueimp-gallery.min.js")' type="text/javascript"></script>
+    <script data-main='@routes.Assets.versioned("javascripts/main.js")' src='@routes.Assets.versioned("lib/requirejs/require.js")' type="text/javascript"></script>
   </body>
 </html>
