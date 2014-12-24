@@ -16,16 +16,17 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.2.1"
 )
 
-// Merge the vendor css.
-Concat.groups := Seq(
-  "stylesheets/vendor/vendor.css" -> group {
-    val base: File = (resourceDirectory in Assets).value
-    val finder: PathFinder = (base / "stylesheets") ** "*.css"
-    finder.getPaths map { x =>
-      x.replace(base.toString + "/", "")
-    }
+// Merge the vendor assets.
+Concat.groups := {
+  implicit val base: File = (resourceDirectory in Assets).value // public folder
+  def getFiles(finder: PathFinder)(implicit base: File): Either[Seq[String], PathFinder] = group {
+    finder.getPaths map (_.replace(base.getPath + "/", ""))
   }
-)
+  Seq(
+    "stylesheets/vendor/vendor.css" -> getFiles((base / "stylesheets" / "vendor") * "*.css"),
+    "javascripts/vendor/vendor.js" -> getFiles((base / "javascripts" / "vendor") * "*.js")
+  )
+}
 
 // For dev.
 pipelineStages in Assets := Seq(concat, cssCompress, digest)
