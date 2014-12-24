@@ -1,11 +1,16 @@
 #venue-content {
   #lightbox-links {
     margin: 30px auto;
-    width: 706px;
+    width: 726px;
 
     a {
       display: inline-block;
+      margin: 5px;
       text-decoration: none;
+    }
+
+    img {
+      vertical-align: bottom;
     }
   }
 }

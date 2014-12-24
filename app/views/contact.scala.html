@@ -3,7 +3,9 @@
     <img src='@routes.Assets.versioned("images/contact/header.png")' alt="header"/>
   </div>
   <div class="content-container">
-    <a id="contact-img" href='https://maps.google.com/maps?q=@Messages("contact.address")' target="_blank"></a>
+    <a href='https://maps.google.com/maps?q=@Messages("contact.address")' target="_blank">
+      <img src='@routes.Assets.versioned("images/contact/1.gif")'/>
+    </a>
     <div>@Messages("contact.address")</div>
     <div>Tel: @Messages("contact.phone") Fax: @Messages("contact.fax")</div>
   </div>
