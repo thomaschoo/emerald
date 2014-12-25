@@ -1,6 +1,6 @@
 name := """emerald-chinese-restaurant"""
 
-version := "1.0-SNAPSHOT"
+version := "0.1.0"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, net.litola.SassPlugin, SbtWeb)
 
@@ -45,7 +45,7 @@ excludeFilter in filter := (
 )
 
 // For dev.
-pipelineStages in Assets := Seq(concat, cssCompress, digest)
+//pipelineStages in Assets := Seq(concat, cssCompress, digest)
 
 // For stage/prod.
-//pipelineStages := Seq(concat, cssCompress, rjs, digest, filter)
+pipelineStages := Seq(concat, cssCompress, rjs, digest, filter)
