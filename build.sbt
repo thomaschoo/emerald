@@ -1,6 +1,6 @@
 name := """emerald-chinese-restaurant"""
 
-version := "1.0-SNAPSHOT"
+version := "0.2.0"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, net.litola.SassPlugin, SbtWeb)
 
@@ -32,15 +32,15 @@ RjsKeys.mainModule := "app"
 
 // Clean up asset jar.
 includeFilter in filter := (
-  "*.coffee*" || "*.map*" || "*.js*" ||
+  "*.coffee*" || "*.js*" ||
   "*.scss*" || "*.css*" ||
   "build.txt*"
 )
 
 excludeFilter in filter := (
-  "*app.js" || "app.js.md5" ||
+  "*app.js" || "app.js.md5" || "app.js.map" ||
   "*app.scss" || "app.scss.md5" ||
-  "*vendor.js" || "vendor.js.md5" ||
+  "*vendor.js" || "vendor.js.md5" || "vendor.js.map" ||
   "*vendor.min.css" || "vendor.min.css.md5"
 )
 
