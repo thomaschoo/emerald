@@ -3,6 +3,8 @@ define ['jquery', 'nprogress'], () ->
   NProgress.configure { showSpinner: false }
   NProgress.start()
 
+  altRootPathName = '/home'
+
   $('li.menu-item').hover ->
     $(this).css 'cursor', 'pointer'
     $div = $(this).children 'div'
@@ -14,10 +16,23 @@ define ['jquery', 'nprogress'], () ->
     $div.children('img').css 'visibility', 'hidden'
 
   $('li.menu-item').on 'click', () ->
+    pathName = '/' + $(this).data 'url'
+    currentPathName = window.location.pathname
+    if !isSamePathName currentPathName, pathName
+      window.history.pushState { pathName: pathName }, null, pathName
+      loadContent pathName
+    else
+      # Fake a load.
+      NProgress.start()
+      NProgress.done()
+
+  isSamePathName = (a, b) ->
+    a == b || (a == '/' && b == altRootPathName) || (b == '/' && a == altRootPathName)
+
+  loadContent = (pathName) ->
     NProgress.start()
 
-    url = '/' + $(this).data 'url'
-    $.get url, (data) ->
+    $.get pathName, (data) ->
       $('#main-content').html data
       window.scrollTo 0, 0
 
@@ -55,6 +70,12 @@ define ['jquery', 'nprogress'], () ->
         event: event
         slideshowInterval: 3000
       }
+
+  # Correct the content upon back.
+  $(window).bind 'popstate', (e) ->
+    prevState = e.originalEvent.state
+    pathName = if prevState then prevState.pathName else altRootPathName
+    loadContent pathName
 
   initCarousel()
   initLightbox()
