@@ -5,16 +5,6 @@ define ['jquery', 'nprogress'], () ->
 
   altRootPathName = '/home'
 
-  $('li.menu-item').hover ->
-    $(this).css 'cursor', 'pointer'
-    $div = $(this).children 'div'
-    $div.removeClass('menu-colour').addClass 'menu-hover-colour'
-    $div.children('img').css 'visibility', 'visible'
-  , ->
-    $div = $(this).children 'div'
-    $div.removeClass('menu-hover-colour').addClass 'menu-colour'
-    $div.children('img').css 'visibility', 'hidden'
-
   $('li.menu-item').on 'click', () ->
     pathName = '/' + $(this).data 'url'
     currentPathName = window.location.pathname
