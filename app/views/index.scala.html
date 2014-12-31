@@ -17,7 +17,7 @@
           </a>
           <ul>
             @for(m <- menu.items) {
-              <li class="menu-item" data-url="@m.url">
+              <li class="menu-item" data-pathname="/@m.url">
                 <div>
                   <img src='@routes.Assets.versioned("images/arrow-right.png")'/>
                   @m.text

@@ -3,26 +3,26 @@ define ['jquery', 'nprogress'], () ->
   NProgress.configure { showSpinner: false }
   NProgress.start()
 
-  altRootPathName = '/home'
+  altRootPathname = '/home'
 
   $('li.menu-item').on 'click', () ->
-    pathName = '/' + $(this).data 'url'
-    currentPathName = window.location.pathname
-    if !isSamePathName currentPathName, pathName
-      window.history.pushState { pathName: pathName }, null, pathName
-      loadContent pathName
+    pathname = $(this).data 'pathname'
+    currentPathname = window.location.pathname
+    if !isSamePathname currentPathname, pathname
+      window.history.pushState { pathname: pathname }, null, pathname
+      loadContent pathname
     else
       # Fake a load.
       NProgress.start()
       NProgress.done()
 
-  isSamePathName = (a, b) ->
-    a == b || (a == '/' && b == altRootPathName) || (b == '/' && a == altRootPathName)
+  isSamePathname = (a, b) ->
+    a == b || (a == '/' && b == altRootPathname) || (b == '/' && a == altRootPathname)
 
-  loadContent = (pathName) ->
+  loadContent = (pathname) ->
     NProgress.start()
 
-    $.get pathName, (data) ->
+    $.get pathname, (data) ->
       $('#main-content').html data
       window.scrollTo 0, 0
 
@@ -64,8 +64,8 @@ define ['jquery', 'nprogress'], () ->
   # Correct the content upon back.
   $(window).bind 'popstate', (e) ->
     prevState = e.originalEvent.state
-    pathName = if prevState then prevState.pathName else altRootPathName
-    loadContent pathName
+    pathname = if prevState then prevState.pathname else altRootPathname
+    loadContent pathname
 
   initCarousel()
   initLightbox()
