@@ -14,6 +14,7 @@ define ['jquery', 'nprogress'], () ->
     else
       # Fake a load.
       NProgress.start()
+      window.scrollTo 0, 0
       NProgress.done()
 
   isSamePathname = (a, b) ->
