@@ -25,3 +25,5 @@ addSbtPlugin("net.ground5hark.sbt" % "sbt-css-compress" % "0.1.3")
 addSbtPlugin("net.ground5hark.sbt" % "sbt-concat" % "0.1.8")
 
 addSbtPlugin("com.slidingautonomy.sbt" % "sbt-filter" % "1.0.1")
+
+addSbtPlugin("com.slidingautonomy.sbt" % "sbt-imagemin" % "1.0.0")

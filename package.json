@@ -1,0 +1,11 @@
+{
+  "name": "emerald-chinese-restaurant",
+  "version": "0.1.0",
+  "dependencies": {
+    "imagemin": "^0.4.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thomaschoo/emerald.git"
+  }
+}
