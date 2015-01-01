@@ -120,3 +120,19 @@ body {
     margin-bottom: 30px;
   }
 }
+
+#carousel {
+  li {
+    border-color: $black;
+  }
+
+  li:hover {
+    background-color: $indicator-hover-colour;
+  }
+
+  .indicator {
+    .active {
+      background-color: $indicator-active-colour;
+    }
+  }
+}
