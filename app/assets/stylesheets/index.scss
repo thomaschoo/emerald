@@ -1,9 +1,20 @@
 @import 'partials/variables';
 
+@media only screen and (max-width: 1023px) {
+  body {
+    background-color: $astra;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    background-attachment: fixed;
+    background-image: url('../images/bg.jpg');
+    background-position: center top;
+  }
+}
+
 body {
-  background-attachment: fixed;
-  background-image: url('../images/bg.jpg');
-  background-position: center top;
   color: $main-colour;
   font: 100% $font-stack;
   margin: 0 auto;
@@ -11,17 +22,12 @@ body {
 }
 
 #page {
-  height: 100%;
   margin: 0 auto;
-  min-height: 100%;
   width: 990px;
 }
 
 #page-content {
-  background-position: top right;
-  background-repeat: repeat-y;
   float: right;
-  min-height: 100%;
   width: 778px;
 
   > #contact {
@@ -49,13 +55,9 @@ body {
 }
 
 #menu {
-  background-color: transparent;
   background-image: url('../images/menu-bg.jpg');
-  background-position: top right;
-  background-repeat: repeat-y;
   float: left;
   height: 100%;
-  min-height: 100%;
   position: fixed;
   width: 212px;
 }
