@@ -2,7 +2,6 @@
 
 #contact-content {
   font-size: 14px;
-  font-weight: bold;
 
   #header {
     margin-top: -4px;
@@ -34,6 +33,14 @@
 
     .control-hover {
       color: $map-control-font-hover-colour;
+    }
+  }
+
+  #contact-hours {
+    margin-top: 15px;
+
+    > :first-child {
+      font-weight: bold;
     }
   }
 }
