@@ -49,7 +49,7 @@ excludeFilter in filter := (
 )
 
 // For dev.
-pipelineStages in Assets := Seq(concat, cssCompress, digest)
+//pipelineStages in Assets := Seq(concat, cssCompress, digest)
 
 // For stage/prod.
-//pipelineStages := Seq(concat, cssCompress, rjs, digest, filter)
+pipelineStages := Seq(concat, cssCompress, rjs, digest, filter)
