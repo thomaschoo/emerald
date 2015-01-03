@@ -2,5 +2,8 @@ app.title=Emerald Chinese Restaurant
 contact.address=30 Eglinton Avenue West Mississauga, ON L5R 3E7
 contact.phone=905.890.9338
 contact.fax=905.890.6828
+contact.gmaps.directions.title=Directions
+contact.gmaps.directions.tooltip=Get directions
+contact.gmaps.url=https://www.google.ca/maps/dir//Emerald+Chinese+Restaurant,+30+Eglinton+Avenue+West,+Mississauga,+ON+L5R+3E7/@43.605628,-79.65281,17z/data=!4m13!1m4!3m3!1s0x882b40ca4e9c20d9:0xd17df4054a659df9!2sEmerald+Chinese+Restaurant!3b1!4m7!1m0!1m5!1m1!1s0x882b40ca4e9c20d9:0xd17df4054a659df9!2m2!1d-79.65281!2d43.605628?hl=en
 feast.discount=彌月酒送紅雞蛋、酸薑、生日酒送壽包, 現金付賬10% off
 footer.copyright=Copyright © 2014 Emerald Chinese Restaurant. All rights reserved.

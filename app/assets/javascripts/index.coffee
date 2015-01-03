@@ -29,10 +29,11 @@ define ['jquery', 'nprogress'], () ->
 
       initCarousel()
       initLightbox()
+      initMap()
 
       NProgress.done()
 
-  # Add the carousel, if applicable.
+  # Initialize the carousel, if applicable.
   initCarousel = () ->
     carouselLinks = $('#links a')
 
@@ -48,7 +49,7 @@ define ['jquery', 'nprogress'], () ->
           $('.indicator').css 'display', 'inline'
       }
 
-  # Add the lightbox, if applicable.
+  # Initialize the lightbox, if applicable.
   initLightbox = () ->
     $('#lightbox-links').on 'click', (event) ->
       event = event || window.event
@@ -62,6 +63,13 @@ define ['jquery', 'nprogress'], () ->
         slideshowInterval: 3000
       }
 
+  # Initialize the map, if applicable.
+  initMap = () ->
+    if $('#map').length > 0
+      controller = window.location.pathname.replace '/', ''
+      require [controller], (controller) ->
+        controller.initMap()
+
   # Correct the content upon back.
   $(window).bind 'popstate', (e) ->
     prevState = e.originalEvent.state
@@ -70,5 +78,6 @@ define ['jquery', 'nprogress'], () ->
 
   initCarousel()
   initLightbox()
+  initMap()
 
   NProgress.done()

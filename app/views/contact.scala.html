@@ -3,10 +3,11 @@
     <img src='@routes.Assets.versioned("images/contact/header.png")' alt="header"/>
   </div>
   <div class="content-container">
-    <a href='https://maps.google.com/maps?q=@Messages("contact.address")' target="_blank">
-      <img src='@routes.Assets.versioned("images/contact/1.gif")'/>
-    </a>
+    <div id="map-container">
+      <div id="map"></div>
+    </div>
     <div>@Messages("contact.address")</div>
     <div>Tel: @Messages("contact.phone") Fax: @Messages("contact.fax")</div>
   </div>
 </div>
+<script type="text/javascript" src="@routes.Contact.messages()"></script>
