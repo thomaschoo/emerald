@@ -7,6 +7,7 @@ import org.specs2.runner.JUnitRunner
 import play.api.test.FakeApplication
 import play.api.test.Helpers._
 
+import helpers.TestUtilities._
 import helpers.WithRouter
 
 @RunWith(classOf[JUnitRunner])

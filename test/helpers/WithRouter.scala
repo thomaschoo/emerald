@@ -7,6 +7,4 @@ abstract class WithRouter(route: String)
                          (implicit override val app: FakeApplication)
   extends WithApplication(app) {
   val Some(result) = play.api.test.Helpers.route(FakeRequest(GET, route))
-
-  def stripWhiteSpaces(result: String): String = result.replaceAll("\\s", "")
 }

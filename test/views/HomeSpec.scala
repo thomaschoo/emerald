@@ -4,9 +4,10 @@ import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
 
-import play.api.test.{FakeApplication, FakeRequest}
 import play.api.test.Helpers._
+import play.api.test.{WithApplication, FakeApplication, FakeRequest}
 
+import helpers.TestUtilities._
 import helpers.WithRouter
 
 @RunWith(classOf[JUnitRunner])
@@ -39,7 +40,8 @@ class HomeSpec extends Specification {
       content must contain(footer)
     }
 
-    "be identical to '/' route" in new WithRouter("/home") {
+    "be identical to '/' route" in new WithApplication {
+      val Some(result) = route(FakeRequest(GET, "/home"))
       val Some(result2) = route(FakeRequest(GET, "/"))
       val content = stripWhiteSpaces(contentAsString(result))
       val content2 = contentAsString(result2)
