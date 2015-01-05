@@ -1,6 +1,6 @@
 name := """emerald-chinese-restaurant"""
 
-version := "0.2.0"
+version := "0.2.1"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, net.litola.SassPlugin, SbtWeb)
 
