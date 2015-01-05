@@ -48,8 +48,6 @@ excludeFilter in filter := (
   "*vendor.min.css" || "vendor.min.css.md5"
 )
 
-// For dev.
-pipelineStages in Assets := Seq(concat, cssCompress, digest)
+pipelineStages in Assets := Seq(concat, cssCompress)
 
-// For stage/prod.
-//pipelineStages := Seq(concat, cssCompress, rjs, digest, filter)
+pipelineStages := Seq(rjs, digest, filter)
