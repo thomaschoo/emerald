@@ -1,15 +1,19 @@
 package controllers
 
-import com.typesafe.config.ConfigFactory
+import play.api.mvc.Controller
 
-import play.api.mvc.{Action, Controller}
-
-import scala.collection.JavaConversions.asScalaBuffer
-
-import helpers.Utilities._
-import models.{Combo, MenuSupport}
+import models.MenuSupport
 
 object Feast extends Controller with MenuSupport {
+  import com.typesafe.config.ConfigFactory
+
+  import play.api.mvc.Action
+
+  import scala.collection.JavaConversions.asScalaBuffer
+
+  import helpers.Utilities.isAjax
+  import models.Combo
+
   val combos: Seq[Combo] =
     ConfigFactory
       .load("feast.conf")
@@ -23,10 +27,9 @@ object Feast extends Controller with MenuSupport {
         )
       }
 
-  def index = Action {
-    implicit request =>
-      val content = views.html.feast(combos)
-      if (isAjax) Ok(content)
-      else Ok(views.html.index(Some(content)))
+  def index = Action { implicit request =>
+    val content = views.html.feast(combos)
+    if (isAjax) Ok(content)
+    else Ok(views.html.index(Some(content)))
   }
 }

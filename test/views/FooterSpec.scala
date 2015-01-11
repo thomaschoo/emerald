@@ -4,12 +4,11 @@ import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
 
-import play.api.test.Helpers._
-import play.api.test.WithApplication
-import play.i18n.Messages
-
 @RunWith(classOf[JUnitRunner])
 class FooterSpec extends Specification {
+  import play.api.test.Helpers._
+  import play.api.test.WithApplication
+  import play.i18n.Messages
 
   "Footer Template".title
 
