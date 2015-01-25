@@ -1,35 +1,41 @@
 package controllers
 
 import play.api.mvc.Controller
+import play.modules.reactivemongo.MongoController
 
 import models.MenuSupport
 
-object Feast extends Controller with MenuSupport {
-  import com.typesafe.config.ConfigFactory
+object Feast extends Controller with MongoController with MenuSupport {
+  import scala.concurrent.Future
 
+  import play.api.libs.concurrent.Execution.Implicits.defaultContext
+  import play.api.libs.json._
   import play.api.mvc.Action
+  import play.modules.reactivemongo.json.collection.JSONCollection
 
-  import scala.collection.JavaConversions.asScalaBuffer
+  import reactivemongo.api._
 
   import helpers.Utilities.isAjax
   import models.Combo
+  import models.JsonFormats._
 
-  val combos: Seq[Combo] =
-    ConfigFactory
-      .load("feast.conf")
-      .getConfigList("combos")
-      .map { x =>
-        Combo(
-          x.getString("title"),
-          x.getStringList("items"),
-          x.getString("servings"),
-          x.getInt("price")
-        )
-      }
+  def collection: JSONCollection = db.collection[JSONCollection]("combos")
 
-  def index = Action { implicit request =>
-    val content = views.html.feast(combos)
-    if (isAjax) Ok(content)
-    else Ok(views.html.index(Some(content)))
+  def index = Action.async { implicit request =>
+    findAll() map { combos =>
+      if (request.accepts("html/text")) {
+        val content = views.html.feast(combos)
+        if (isAjax) Ok(content)
+        else Ok(views.html.index(Some(content)))
+      } else Ok(Json.toJson(combos))
+    }
+  }
+
+  private def findAll(): Future[List[Combo]] = {
+    val cursor: Cursor[Combo] = collection
+      .find(Json.obj("type" -> "feast"))
+      .cursor[Combo]
+
+    cursor.collect[List]()
   }
 }
