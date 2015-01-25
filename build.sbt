@@ -1,4 +1,6 @@
-name := """emerald-chinese-restaurant"""
+name := """emerald-restaurant"""
+
+organization := "com.thomaschoo"
 
 version := "0.2.1"
 
