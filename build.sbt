@@ -2,7 +2,7 @@ name := """emerald-chinese-restaurant"""
 
 version := "0.2.1"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala, net.litola.SassPlugin, SbtWeb)
+lazy val root = (project in file(".")).enablePlugins(PlayScala, net.litola.SassPlugin, SbtWeb, SbtMongoSeed)
 
 scalaVersion := "2.11.4"
 
