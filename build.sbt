@@ -4,7 +4,7 @@ organization := "com.thomaschoo"
 
 version := "0.2.1"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala, net.litola.SassPlugin, SbtWeb, SbtMongoSeed)
+lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb, SbtMongoSeed)
 
 scalaVersion := "2.11.4"
 
@@ -20,6 +20,10 @@ libraryDependencies ++= Seq(
   "org.julienrf" %% "play-jsmessages" % "1.6.2",
   "org.reactivemongo" %% "play2-reactivemongo" % "0.10.5.0.akka23"
 )
+
+includeFilter in (Assets, LessKeys.less) := "*.less"
+
+excludeFilter in (Assets, LessKeys.less) := "_*.less"
 
 // Merge the vendor assets.
 Concat.groups := {
@@ -39,13 +43,13 @@ RjsKeys.mainModule := "app"
 // Clean up asset jar.
 includeFilter in filter := (
   "*.coffee*" || "*.js*" ||
-  "*.scss*" || "*.css*" ||
+  "*.less*" || "*.css*" ||
   "build.txt*"
 )
 
 excludeFilter in filter := (
   "*app.js" || "app.js.md5" || "app.js.map" ||
-  "*app.scss" || "app.scss.md5" ||
+  "*app.min.css" || "app.min.css.md5" ||
   "*vendor.js" || "vendor.js.md5" || "vendor.js.map" ||
   "*gmaps.js" || "gmaps.js.md5" || "gmaps.js.map" ||
   "*vendor.min.css" || "vendor.min.css.md5"

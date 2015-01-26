@@ -1,5 +1,3 @@
-@import 'partials/variables';
-
 #contact-content {
   font-size: 14px;
 
@@ -8,8 +6,8 @@
   }
 
   #map-container {
-    background: $map-container-colour;
-    box-shadow: 0 0 10px $dusty-gray;
+    background: @map-container-colour;
+    box-shadow: 0 0 10px @dusty-gray;
     margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
@@ -23,16 +21,16 @@
     width: 100%;
 
     .control {
-      background: $map-control-colour;
+      background: @map-control-colour;
       border: 1px solid rgba(0, 0, 0, .15);
-      color: $map-control-font-colour;
+      color: @map-control-font-colour;
       font-weight: bold;
       margin: 5px;
       padding: 1px 6px;
     }
 
     .control-hover {
-      color: $map-control-font-hover-colour;
+      color: @map-control-font-hover-colour;
     }
   }
 
