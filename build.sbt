@@ -18,7 +18,8 @@ libraryDependencies ++= Seq(
   "com.mohiva" %% "play-html-compressor" % "0.3.1",
   "com.typesafe" % "config" % "1.2.1",
   "org.julienrf" %% "play-jsmessages" % "1.6.2",
-  "org.reactivemongo" %% "play2-reactivemongo" % "0.10.5.0.akka23"
+  "org.reactivemongo" %% "play2-reactivemongo" % "0.10.5.0.akka23",
+  "org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.44.0" % "test"
 )
 
 includeFilter in (Assets, LessKeys.less) := "*.less"
