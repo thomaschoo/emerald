@@ -1,13 +1,13 @@
 import java.util.concurrent.TimeUnit
 
+import scala.collection.JavaConversions.asScalaBuffer
+
 import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
 
 import play.api.i18n.Messages
 import play.api.test._
-
-import scala.collection.JavaConversions.asScalaBuffer
 
 @RunWith(classOf[JUnitRunner])
 class IntegrationSpec extends Specification {

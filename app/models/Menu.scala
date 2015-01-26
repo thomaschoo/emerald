@@ -5,10 +5,9 @@ case class MenuItem(url: String, text: String)
 
 trait MenuSupport {
   import play.api.Play.current
-  import play.api.i18n.Lang
+  import play.api.i18n.{Lang, Messages}
 
   implicit def menu(implicit lang: Lang): Menu = {
-    import play.api.i18n.Messages
 
     val messages = Messages.messages filter {
       case (k, v) =>

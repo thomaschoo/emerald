@@ -4,11 +4,11 @@ import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
 
+import play.api.test.Helpers._
+import play.api.test.WithApplication
+
 @RunWith(classOf[JUnitRunner])
 class CarouselSpec extends Specification {
-  import play.api.test.Helpers._
-  import play.api.test.WithApplication
-
   "Carousel Template".title
 
   val galleryLink = "<a href".r
@@ -41,4 +41,5 @@ class CarouselSpec extends Specification {
     extends WithApplication {
     val html = views.html.carousel(length, path, extension)
   }
+
 }

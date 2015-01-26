@@ -4,13 +4,13 @@ import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
 
+import play.api.test.Helpers._
+import play.api.test.{FakeRequest, WithApplication}
+
+import helpers.TestUtilities._
+
 @RunWith(classOf[JUnitRunner])
 class ContactSpec extends Specification {
-  import play.api.test.Helpers._
-  import play.api.test.{ FakeRequest, WithApplication }
-
-  import helpers.TestUtilities._
-
   "Contact Route".title
 
   "'/contact' route" should {

@@ -1,24 +1,20 @@
 package controllers
 
-import play.api.mvc.Controller
-import play.modules.reactivemongo.MongoController
+import scala.concurrent.Future
 
-import models.MenuSupport
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.json._
+import play.api.mvc.{Action, Controller}
+import play.modules.reactivemongo.MongoController
+import play.modules.reactivemongo.json.collection.JSONCollection
+
+import reactivemongo.api._
+
+import helpers.Utilities.isAjax
+import models.JsonFormats._
+import models.{Combo, MenuSupport}
 
 object Feast extends Controller with MongoController with MenuSupport {
-  import scala.concurrent.Future
-
-  import play.api.libs.concurrent.Execution.Implicits.defaultContext
-  import play.api.libs.json._
-  import play.api.mvc.Action
-  import play.modules.reactivemongo.json.collection.JSONCollection
-
-  import reactivemongo.api._
-
-  import helpers.Utilities.isAjax
-  import models.Combo
-  import models.JsonFormats._
-
   def collection: JSONCollection = db.collection[JSONCollection]("combos")
 
   def index = Action.async { implicit request =>
