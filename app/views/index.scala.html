@@ -12,14 +12,12 @@
     <div id="page">
       <div id="menu">
         <div id="menu-content">
-          <a href="/">
-              <img id="logo" src='@routes.Assets.versioned("images/logo.png")' alt="Emerald Chinese Restaurant"/>
-          </a>
+          <a class="sprite sprite-logo" href="/"></a>
           <ul>
             @for(m <- menu.items) {
-              <li class="menu-item" data-pathname="@m.url">
+              <li class="menu-item sprite sprite-menu-content-bg" data-pathname="@m.url">
                 <div>
-                  <img src='@routes.Assets.versioned("images/arrow-right.png")'/>
+                  <span class="sprite sprite-arrow-right"></span>
                   @m.text
                 </div>
               </li>
