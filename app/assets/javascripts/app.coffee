@@ -4,11 +4,9 @@ require.config {
     nprogress: '../lib/nprogress/nprogress'
     async: '../lib/requirejs-plugins/async'
     gmaps: './vendor/gmaps'
+    blueimp: 'blueimp-gallery-indicator'
   }
   shim: {
-    jquery: {
-      exports: '$'
-    }
     nprogress: {
       deps: ['jquery']
     }

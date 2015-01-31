@@ -29,13 +29,12 @@ excludeFilter in (Assets, LessKeys.less) := "_*.less"
 // Merge the vendor assets.
 Concat.groups := {
   implicit val base: File = (resourceDirectory in Assets).value // public folder
-  val exclude: sbt.FileFilter = "gmaps.js" // files to exclude from concat
+  val exclude: sbt.FileFilter = "" // files to exclude from concat
   def getFiles(finder: PathFinder)(implicit base: File): Either[Seq[String], PathFinder] = group {
     finder.getPaths map (_.replace(base.getPath + "/", ""))
   }
   Seq(
-    "stylesheets/vendor/vendor.css" -> getFiles((base / "stylesheets" / "vendor") * ("*.css" -- exclude)),
-    "javascripts/vendor/vendor.js" -> getFiles((base / "javascripts" / "vendor") * ("*.js" -- exclude))
+    "stylesheets/vendor.css" -> getFiles((base / "stylesheets" / "vendor") * ("*.css" -- exclude))
   )
 }
 
@@ -45,15 +44,14 @@ RjsKeys.mainModule := "app"
 includeFilter in filter := (
   "*.coffee*" || "*.js*" ||
   "*.less*" || "*.css*" ||
-  "build.txt*"
+  "*build.txt*"
 )
 
 excludeFilter in filter := (
   "*app.js" || "app.js.md5" || "app.js.map" ||
   "*app.min.css" || "app.min.css.md5" ||
-  "*vendor.js" || "vendor.js.md5" || "vendor.js.map" ||
-  "*gmaps.js" || "gmaps.js.md5" || "gmaps.js.map" ||
-  "*vendor.min.css" || "vendor.min.css.md5"
+  "*vendor.min.css" || "vendor.min.css.md5" ||
+  "*gmaps.js" || "gmaps.js.md5" || "gmaps.js.map"
 )
 
 pipelineStages in Assets := Seq(concat, cssCompress)

@@ -5,7 +5,7 @@
   <head>
     <title>@Messages("app.title")</title>
     <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/app.min.css")'>
-    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/vendor/vendor.min.css")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/vendor.min.css")'>
     <link rel="shortcut icon" type="image/x-icon" href='@routes.Assets.versioned("images/favicon.ico")'>
   </head>
   <body>
@@ -37,7 +37,6 @@
       </div>
     </div>
 
-    <script src='@routes.Assets.versioned("javascripts/vendor/vendor.js")' type="text/javascript"></script>
     <script data-main='@routes.Assets.versioned("javascripts/app.js")' src='@routes.Assets.versioned("lib/requirejs/require.js")' type="text/javascript"></script>
     @analytics()
   </body>

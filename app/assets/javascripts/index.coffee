@@ -1,4 +1,4 @@
-define ['jquery', 'nprogress'], () ->
+define ['jquery', 'nprogress', 'blueimp'], ($, np, blueimp) ->
 
   NProgress.configure { showSpinner: false }
   NProgress.start()
@@ -38,7 +38,7 @@ define ['jquery', 'nprogress'], () ->
     carouselLinks = $('#links a')
 
     if carouselLinks.length > 0
-      blueimp.Gallery carouselLinks, {
+      blueimp carouselLinks, {
         container: '#carousel'
         carousel: true
         stretchImages: 'cover'
@@ -56,7 +56,7 @@ define ['jquery', 'nprogress'], () ->
       target = event.target || event.srcElement
       link = if target.src then target.parentNode else target
       links = $(this).children 'a'
-      blueimp.Gallery links, {
+      blueimp links, {
         container: '#carousel'
         index: link
         event: event
