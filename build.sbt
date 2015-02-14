@@ -19,7 +19,8 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.2.1",
   "org.julienrf" %% "play-jsmessages" % "1.6.2",
   "org.reactivemongo" %% "play2-reactivemongo" % "0.10.5.0.akka23",
-  "org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.44.0" % "test"
+  "org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.44.0" % "test",
+  "org.webjars" % "font-awesome" % "4.3.0-1"
 )
 
 includeFilter in (Assets, LessKeys.less) := "*.less"

@@ -15,49 +15,158 @@
 body {
   color: @main-colour;
   font: 100% @font-stack;
-  margin: 0 auto;
+  margin: auto;
+  overflow-x: hidden;
   text-align: center;
 }
 
-#page {
-  margin: 0 auto;
-  width: 990px;
-}
-
-#page-content {
-  float: right;
-  width: 778px;
-
-  > #contact {
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px 20px 5px 0;
-    text-align: right;
+@media only screen and (max-width: 1023px) {
+  #page {
+    margin: auto;
+    width: 778px;
   }
 
-  #footer {
-    #footer-img {
-      background-color: @footer-img-colour;
-      height: 13px;
+  #menu {
+    background-color: @forest-green;
+    left: -250px;
+    margin-top: -15px;
+    overflow-x: hidden;
+    transition: left 0.2s;
+    width: 250px;
+    z-index: 1;
+    -webkit-transition: left 0.2s;
+
+    #menu-content {
+      margin-top: 135px;
+
+      a {
+        display: none;
+      }
+
+      li {
+        background: none;
+        background-color: @astra;
+        border-color: @forest-green;
+        border-right: 1px solid;
+        height: 100%;
+        margin-left: -1px;
+
+        div {
+          font-size: 17px;
+          padding: 10px 5px;
+
+          span {
+            background: none;
+            margin: 0 15px;
+          }
+
+          span:before {
+            font-family: fontawesome;
+          }
+        }
+      }
+
+      li.active {
+        box-shadow: inset 5px 0 0 @maroon, inset 6px 0 0 #222;
+      }
+    }
+
+    span.icon-home:before {
+      content: '\f015';
+    }
+
+    span.icon-takeout:before,
+    span.icon-lunch:before,
+    span.icon-dine:before,
+    span.icon-feast:before {
+      content: '\f0f5';
+    }
+
+    span.icon-wedding:before {
+      content: '\f0a2';
+      margin-left: -3px;
+    }
+
+    span.icon-venue:before {
+      content: '\f03e';
+      margin-left: -3px;
+    }
+
+    span.icon-contact:before {
+      content: '\f041';
+    }
+  }
+
+  #page-content {
+    transition: transform .3s;
+
+    > #contact {
+      font-size: 16px;
+      padding: 10px;
     }
 
     #copyright {
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 50px;
-      margin-top: -5px;
-      padding-right: 30px;
-      text-align: right;
+      font-size: 14px;
     }
+  }
+
+  #menu.open {
+    left: 0px;
+  }
+
+  .burger {
+    cursor: pointer;
+    float: left;
+    margin: -5px 15px;
+  }
+
+  .burger:before {
+    content: '\f0c9';
+    font: 42px fontawesome;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) {
+  #page {
+    margin: 0 auto;
+    width: 990px;
+  }
+
+  #menu {
+    background-image: url('../images/menu-bg.jpg');
+    float: left;
+    width: 212px;
+  }
+
+  #menu-content {
+    li {
+      div {
+        margin: 11px 20px;
+        text-decoration: none;
+        -webkit-margin-before: 13px;
+        -webkit-margin-after: 13px;
+
+        span {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+  #logo {
+    padding: 25px 0 15px;
+  }
+
+  #page-content {
+    float: right;
+    width: 778px;
   }
 }
 
 #menu {
-  background-image: url('../images/menu-bg.jpg');
-  float: left;
   height: 100%;
   position: fixed;
-  width: 212px;
 }
 
 #menu-content {
@@ -77,14 +186,6 @@ body {
       color: @menu-font-colour;
       font-size: 14px;
       font-weight: bold;
-      margin: 11px 20px;
-      text-decoration: none;
-      -webkit-margin-before: 13px;
-      -webkit-margin-after: 13px;
-    }
-
-    span {
-      visibility: hidden;
     }
   }
 
@@ -105,8 +206,27 @@ body {
   }
 }
 
-#logo {
-  padding: 25px 0 15px;
+#page-content {
+  > #contact {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 20px;
+    text-align: right;
+  }
+
+  #footer {
+    #footer-img {
+      background-color: @footer-img-colour;
+      height: 13px;
+    }
+
+    #copyright {
+      font-size: 12px;
+      font-weight: bold;
+      margin: 10px 30px;
+      text-align: right;
+    }
+  }
 }
 
 .content-container {

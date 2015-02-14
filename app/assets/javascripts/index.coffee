@@ -5,6 +5,29 @@ define ['jquery', 'nprogress', 'blueimp'], ($, np, blueimp) ->
 
   altRootPathname = '/home'
 
+  $('.burger').on 'click touchstart', (e) ->
+    e.stopPropagation()
+    $('#menu')
+      .addClass 'open'
+      .find('li').removeClass 'active'
+
+    pathname = location.pathname.substring 1
+    if pathname == ''
+      pathname = altRootPathname.substring 1
+
+    $('span.icon-' + pathname).parents('li').addClass 'active'
+
+  $('body').on 'click touchstart', () ->
+    closeMenu()
+
+  closeMenu = () ->
+    $menu = $('#menu')
+    if $menu.hasClass 'open'
+     $menu.removeClass 'open'
+
+  $('#menu').on 'click touchstart', (e) ->
+    e.stopPropagation()
+
   $('li.menu-item').on 'click', () ->
     pathname = $(this).data 'pathname'
     currentPathname = window.location.pathname
@@ -16,6 +39,8 @@ define ['jquery', 'nprogress', 'blueimp'], ($, np, blueimp) ->
       NProgress.start()
       window.scrollTo 0, 0
       NProgress.done()
+
+    closeMenu()
 
   isSamePathname = (a, b) ->
     a == b || (a == '/' && b == altRootPathname) || (b == '/' && a == altRootPathname)
