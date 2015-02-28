@@ -19,11 +19,13 @@ object Feast extends Controller with MongoController with MenuSupport {
 
   def index = Action.async { implicit request =>
     findAll() map { combos =>
-      if (request.accepts("html/text")) {
-        val content = views.html.feast(combos)
-        if (isAjax) Ok(content)
-        else Ok(views.html.index(Some(content)))
-      } else Ok(Json.toJson(combos))
+      render {
+        case Accepts.Html() =>
+          val content = views.html.feast(combos)
+          if (isAjax) Ok(content)
+          else Ok(views.html.index(Some(content)))
+        case Accepts.Json() => Ok(Json.toJson(combos))
+      }
     }
   }
 
