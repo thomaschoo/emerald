@@ -4,8 +4,10 @@
 <html>
   <head>
     <title>@Messages("app.title")</title>
-    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/app.min.css")'>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href='@routes.Assets.versioned("lib/font-awesome/css/font-awesome.min.css")'>
     <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/vendor.min.css")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/app.min.css")'>
     <link rel="shortcut icon" type="image/x-icon" href='@routes.Assets.versioned("images/favicon.ico")'>
   </head>
   <body>
@@ -17,7 +19,7 @@
             @for(m <- menu.items) {
               <li class="menu-item sprite sprite-menu-content-bg" data-pathname="@m.url">
                 <div>
-                  <span class="sprite sprite-arrow-right"></span>
+                  <span class="sprite sprite-arrow-right icon-@m.url.substring(1)"></span>
                   @m.text
                 </div>
               </li>
@@ -26,6 +28,7 @@
         </div>
       </div>
       <div id="page-content">
+        <a class="burger"></a>
         <p id="contact">@Messages("contact.address") @Messages("contact.phone")</p>
         <div id="main-content">
           @content match {
