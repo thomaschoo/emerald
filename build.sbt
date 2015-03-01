@@ -26,6 +26,8 @@ includeFilter in (Assets, LessKeys.less) := "*.less"
 
 excludeFilter in (Assets, LessKeys.less) := "_*.less"
 
+excludeFilter in cssCompress := "*font-awesome*"
+
 // Merge the vendor assets.
 Concat.groups := {
   implicit val base: File = (resourceDirectory in Assets).value // public folder
