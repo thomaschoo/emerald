@@ -5,7 +5,7 @@ define ['jquery', 'nprogress', 'blueimp'], ($, np, blueimp) ->
 
   altRootPathname = '/home'
 
-  $('.burger').on 'click touchstart', (e) ->
+  $('#burger').on 'click touchstart', (e) ->
     e.stopPropagation()
     $('#menu')
       .addClass 'open'
