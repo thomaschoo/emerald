@@ -9,8 +9,8 @@ import models.MenuSupport
 import services.FeastDao
 
 object Feast extends Controller with MenuSupport {
-  def index = Action.async { implicit request =>
-    FeastDao.findAll() map { combos =>
+  def index(offset: Int, limit: Int) = Action.async { implicit request =>
+    FeastDao.findAll(offset, limit) map { combos =>
       render {
         case Accepts.Html() =>
           val content = views.html.feast(combos)

@@ -8,7 +8,7 @@ GET     /home                       controllers.Home.index
 GET     /takeout                    controllers.Takeout.index
 GET     /lunch                      controllers.Lunch.index
 GET     /dine                       controllers.Dine.index
-GET     /feast                      controllers.Feast.index
+GET     /feast                      controllers.Feast.index(offset: Int ?= 0, limit: Int ?= Int.MaxValue)
 GET     /wedding                    controllers.Wedding.index
 GET     /venue                      controllers.Venue.index
 GET     /contact                    controllers.Contact.index

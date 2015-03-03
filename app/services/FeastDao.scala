@@ -8,16 +8,19 @@ import play.api.libs.json.Json
 import play.modules.reactivemongo.ReactiveMongoPlugin
 import play.modules.reactivemongo.json.collection.JSONCollection
 
+import reactivemongo.api.QueryOpts
+
 import models.Combo
 
 object FeastDao {
 
   private def collection: JSONCollection = ReactiveMongoPlugin.db.collection[JSONCollection]("combos")
 
-  def findAll(): Future[List[Combo]] = {
+  def findAll(offset: Int, limit: Int): Future[List[Combo]] = {
     collection
       .find(Json.obj("type" -> "feast"))
+      .options(QueryOpts(offset, limit))
       .cursor[Combo]
-      .collect[List]()
+      .collect[List](limit)
   }
 }
