@@ -9,6 +9,7 @@ GET     /takeout                    controllers.Takeout.index
 GET     /lunch                      controllers.Lunch.index
 GET     /dine                       controllers.Dine.index
 GET     /feast                      controllers.Feast.index(offset: Int ?= 0, limit: Int ?= Int.MaxValue)
+GET     /feast/:id                  controllers.Feast.show(id: String)
 GET     /wedding                    controllers.Wedding.index
 GET     /venue                      controllers.Venue.index
 GET     /contact                    controllers.Contact.index
