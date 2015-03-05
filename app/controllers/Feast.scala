@@ -24,7 +24,10 @@ object Feast extends Controller with MenuSupport {
   def show(id: String) = Action.async { implicit request =>
     FeastDao.find(id) map { combo =>
       render {
-        case Accepts.Json() => Ok(Json.toJson(combo))
+        case Accepts.Json() => combo match {
+          case Some(c) => Ok(Json.toJson(c))
+          case None => NotFound(Json.parse("{}"))
+        }
       }
     }
   }
