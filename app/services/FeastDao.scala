@@ -17,16 +17,6 @@ object FeastDao {
 
   private def collection: JSONCollection = ReactiveMongoPlugin.db.collection[JSONCollection]("combos")
 
-  def find(id: String): Future[Option[Combo]] = {
-    val combo =
-      for {
-        objectId <- BSONObjectID.parse(id)
-        c = collection.find(BSONDocument("_id" -> objectId)).one[Combo]
-      } yield c
-
-    combo getOrElse Future { None }
-  }
-
   def findAll(offset: Int, limit: Int): Future[List[Combo]] = {
     collection
       .find(BSONDocument("type" -> "feast"))
@@ -34,4 +24,11 @@ object FeastDao {
       .cursor[Combo]
       .collect[List](limit)
   }
+
+  def find(id: String): Future[Option[Combo]] = {
+    for {
+      objectId <- BSONObjectID.parse(id)
+      combo = collection.find(BSONDocument("_id" -> objectId)).one[Combo]
+    } yield combo
+  } getOrElse Future { None }
 }
