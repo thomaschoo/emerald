@@ -4,6 +4,7 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
 case class Combo(id: String, title: String, items: Seq[String], servings: String, price: Int)
+case class ComboForm(id: Option[String], title: String, items: Seq[String], servings: String, price: Int)
 
 object Combo {
   implicit val comboWrites: Writes[Combo] = (

@@ -1,14 +1,18 @@
 package controllers
 
+import scala.concurrent.Future
+
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 
 import helpers.Utilities.isAjax
-import models.MenuSupport
+import models.{ComboForm, MenuSupport}
 import services.FeastDao
 
 object Feast extends Controller with MenuSupport {
+  implicit val comboFormFormat = Json.format[ComboForm]
+
   def index(offset: Int, limit: Int) = Action.async { implicit request =>
     FeastDao.findAll(offset, limit) map { combos =>
       render {
@@ -30,5 +34,12 @@ object Feast extends Controller with MenuSupport {
         }
       }
     }
+  }
+
+  def create() = Action.async(parse.json) { implicit request =>
+    Json.fromJson[ComboForm](request.body).fold(
+      invalid => Future.successful(BadRequest("Validation Failed: Invalid or missing combo parameters.")),
+      form => FeastDao.insert(form) map (_ => Created)
+    )
   }
 }
