@@ -1,6 +1,7 @@
 package services
 
 import scala.concurrent.Future
+import scala.util.Try
 
 import play.api.Play.current
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -14,7 +15,7 @@ import reactivemongo.api.QueryOpts
 import reactivemongo.bson.BSONObjectID
 import reactivemongo.core.commands.LastError
 
-import models.{ComboForm, Combo}
+import models.{Combo, ComboForm}
 
 object FeastDao {
   implicit val comboReads: Reads[Combo] = (
@@ -53,5 +54,20 @@ object FeastDao {
         "type" -> "feast"
       )
     )
+  }
+
+  def update(form: ComboForm): Try[Future[LastError]] = {
+    for {
+      objectId <- BSONObjectID.parse(form.id getOrElse "")
+      c = collection.update(Json.obj("_id" -> objectId),
+        Json.obj(
+          "title" -> form.title,
+          "items" -> form.items,
+          "servings" -> form.servings,
+          "price" -> form.price,
+          "type" -> "feast"
+        )
+      )
+    } yield c
   }
 }

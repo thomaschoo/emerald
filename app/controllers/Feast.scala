@@ -1,6 +1,7 @@
 package controllers
 
 import scala.concurrent.Future
+import scala.util.{Failure, Success}
 
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.json.Json
@@ -40,6 +41,16 @@ object Feast extends Controller with MenuSupport {
     Json.fromJson[ComboForm](request.body).fold(
       invalid => Future.successful(BadRequest("Validation Failed: Invalid or missing combo parameters.")),
       form => FeastDao.insert(form) map (_ => Created)
+    )
+  }
+
+  def update(id: String) = Action.async(parse.json) { implicit request =>
+    Json.fromJson[ComboForm](request.body).fold(
+      invalid => Future.successful(BadRequest("Validation Failed: Invalid or missing combo parameters.")),
+      form => FeastDao.update(form) match {
+        case Success(lastError) => lastError map (_ => Created)
+        case Failure(ex) => Future.successful(BadRequest(ex.getMessage))
+      }
     )
   }
 }
