@@ -12,8 +12,6 @@ import models.{ComboForm, MenuSupport}
 import services.FeastDao
 
 object Feast extends Controller with MenuSupport {
-  implicit val comboFormFormat = Json.format[ComboForm]
-
   def index(offset: Int, limit: Int) = Action.async { implicit request =>
     FeastDao.findAll(offset, limit) map { combos =>
       render {
@@ -39,14 +37,14 @@ object Feast extends Controller with MenuSupport {
 
   def create() = Action.async(parse.json) { implicit request =>
     Json.fromJson[ComboForm](request.body).fold(
-      invalid => Future.successful(BadRequest("Validation Failed: Invalid or missing combo parameters.")),
+      invalid => Future.successful(BadRequest(ComboForm.toErrorJson(41, invalid))),
       form => FeastDao.insert(form) map (_ => Created)
     )
   }
 
   def update(id: String) = Action.async(parse.json) { implicit request =>
     Json.fromJson[ComboForm](request.body).fold(
-      invalid => Future.successful(BadRequest("Validation Failed: Invalid or missing combo parameters.")),
+      invalid => Future.successful(BadRequest(ComboForm.toErrorJson(42, invalid))),
       form => FeastDao.update(form) match {
         case Success(lastError) => lastError map (_ => Ok)
         case Failure(ex) => Future.successful(BadRequest(ex.getMessage))

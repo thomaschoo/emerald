@@ -1,5 +1,6 @@
 package models
 
+import play.api.data.validation.ValidationError
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
@@ -14,4 +15,21 @@ object Combo {
       (__ \ "servings").write[String] and
       (__ \ "price").write[Int]
     )(unlift(Combo.unapply))
+}
+
+object ComboForm {
+  implicit val comboFormFormat = Json.format[ComboForm]
+
+  def toErrorJson(code: Int, errors: Seq[(JsPath, Seq[ValidationError])]): JsObject = {
+    Json.obj(
+      "code" -> code,
+      "message" -> "Validation Failed",
+      "errors" -> errors.map { case (x, _) =>
+        Json.obj(
+          "field" -> x.toString().substring(1),
+          "description" -> "Invalid or missing"
+        )
+      }
+    )
+  }
 }
