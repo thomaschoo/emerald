@@ -48,7 +48,7 @@ object Feast extends Controller with MenuSupport {
     Json.fromJson[ComboForm](request.body).fold(
       invalid => Future.successful(BadRequest("Validation Failed: Invalid or missing combo parameters.")),
       form => FeastDao.update(form) match {
-        case Success(lastError) => lastError map (_ => Created)
+        case Success(lastError) => lastError map (_ => Ok)
         case Failure(ex) => Future.successful(BadRequest(ex.getMessage))
       }
     )
