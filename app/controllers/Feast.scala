@@ -8,7 +8,7 @@ import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 
 import helpers.Utilities.isAjax
-import models.{ComboForm, MenuSupport}
+import models.{ComboForm, Form, MenuSupport}
 import services.FeastDao
 
 object Feast extends Controller with MenuSupport {
@@ -37,14 +37,14 @@ object Feast extends Controller with MenuSupport {
 
   def create() = Action.async(parse.json) { implicit request =>
     Json.fromJson[ComboForm](request.body).fold(
-      invalid => Future.successful(BadRequest(ComboForm.toErrorJson(41, invalid))),
+      invalid => Future.successful(BadRequest(Form.toErrorJson(41, invalid))),
       form => FeastDao.insert(form) map (_ => Created)
     )
   }
 
   def update(id: String) = Action.async(parse.json) { implicit request =>
     Json.fromJson[ComboForm](request.body).fold(
-      invalid => Future.successful(BadRequest(ComboForm.toErrorJson(42, invalid))),
+      invalid => Future.successful(BadRequest(Form.toErrorJson(42, invalid))),
       form => FeastDao.update(form) match {
         case Success(lastError) => lastError map (_ => Ok)
         case Failure(ex) => Future.successful(BadRequest(ex.getMessage))
